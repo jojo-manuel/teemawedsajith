@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initVenueTabs();
   initParticles();
   initRosePetals();
-  initBlessingsWall();
   initAudioPlayer();
   initAutoScroll();
   initShareButtons();
@@ -289,69 +288,7 @@ function initRosePetals() {
   }
 }
 
-/* --------------------------------------------------------------------------
-   6. BLESSINGS WALL & LOCAL STORAGE
-   -------------------------------------------------------------------------- */
-const initialBlessings = [
-  {
-    name: "Fr. Joseph & Parish Community",
-    event: "Parish Blessings",
-    text: "May the Almighty Lord abundantly bless Ajith & Alphonsa as they unite in holy matrimony. Wishing you both a lifetime filled with faith, unity, and divine peace."
-  },
-  {
-    name: "Mathew & Family",
-    event: "Engagement & Marriage",
-    text: "So thrilled for you both, Ajith & Alphonsa! May your lives together be as sweet and joyous as your wedding celebrations. Congratulations!"
-  },
-  {
-    name: "Dr. Anish & Elizabeth",
-    event: "Well-wishers",
-    text: "Two beautiful souls joined in love! Wishing you endless harmony, health, and prosperity on this wonderful new journey."
-  },
-  {
-    name: "Sr. Mary & Convent Friends",
-    event: "Holy Mass Prayers",
-    text: "Surrounding Ajith and Alphonsa with continuous prayers for grace, wisdom, and eternal togetherness. God bless your union!"
-  }
-];
 
-function initBlessingsWall() {
-  const container = document.getElementById('blessings-container');
-  if (!container) return;
-
-  // Combine initial blessings with local stored ones
-  const stored = JSON.parse(localStorage.getItem('ajith_alphonsa_wishes') || '[]');
-  const allBlessings = [...stored, ...initialBlessings];
-
-  renderBlessings(allBlessings);
-}
-
-function renderBlessings(list) {
-  const container = document.getElementById('blessings-container');
-  container.innerHTML = '';
-
-  list.forEach(item => {
-    const card = document.createElement('div');
-    card.className = 'blessing-card';
-    card.innerHTML = `
-      <div class="quote-icon"><i class="fa-solid fa-quote-left"></i></div>
-      <p class="blessing-text">"${escapeHtml(item.text)}"</p>
-      <div class="blessing-author">
-        <span class="author-name">${escapeHtml(item.name)}</span>
-        <span class="author-event">${escapeHtml(item.event)}</span>
-      </div>
-    `;
-    container.appendChild(card);
-  });
-}
-
-function escapeHtml(str) {
-  return String(str)
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;');
-}
 
 
 
