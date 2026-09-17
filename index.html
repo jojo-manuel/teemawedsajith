@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ajith & Alphonsa | Wedding & Engagement Invitation</title>
+  <meta name="description" content="You are cordially invited to celebrate the Engagement and Holy Matrimony of Ajith & Alphonsa. Join us on October 17 & 22!">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💍</text></svg>">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Great+Vibes&family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Floating Particles Canvas -->
+  <canvas id="particles-canvas"></canvas>
+  <canvas id="petals-canvas"></canvas>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="nav-logo">
+        <span class="monogram-text">A <i class="fa-solid fa-heart ring-icon"></i> A</span>
+      </a>
+      
+      <div class="nav-links" id="nav-links">
+        <a href="#hero" class="nav-item active"><i class="fa-solid fa-house"></i> Home</a>
+        <a href="#couple" class="nav-item"><i class="fa-solid fa-user-group"></i> Couple</a>
+        <a href="#events" class="nav-item"><i class="fa-solid fa-calendar-check"></i> Events</a>
+        <a href="#venue-section" class="nav-item"><i class="fa-solid fa-church"></i> Venues</a>
+        <a href="#blessings" class="nav-item"><i class="fa-solid fa-comment-dots"></i> Blessings</a>
+      </div>
+
+      <div class="nav-actions">
+        <button id="music-toggle-btn" class="nav-btn" title="Toggle Ambient Music">
+          <i class="fa-solid fa-music"></i> <span id="music-status-text">Music</span>
+        </button>
+        <button id="petal-toggle-btn" class="nav-btn" title="Toggle Rose Petals">
+          <i class="fa-solid fa-spa"></i>
+        </button>
+        <button class="mobile-menu-toggle" id="menu-toggle" aria-label="Toggle navigation">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-section" id="hero">
+    <div class="hero-bg-overlay"></div>
+    <div class="hero-content">
+      <div class="ornament-crest">
+        <div class="crest-circle">
+          <span class="crest-letters">A & A</span>
+        </div>
+      </div>
+
+      <p class="hero-subtitle gold-shine">Together with their families</p>
+      
+      <h1 class="hero-title">
+        <span class="groom-name">Ajith</span>
+        <span class="ampersand">&</span>
+        <span class="bride-name">Alphonsa</span>
+      </h1>
+
+      <p class="hero-tagline">Invite you to celebrate their love & union</p>
+
+      <div class="hero-dates-badge">
+        <div class="date-chip">
+          <i class="fa-solid fa-ring"></i>
+          <span>Engagement: Oct 17</span>
+        </div>
+        <div class="divider-dot">✦</div>
+        <div class="date-chip highlight">
+          <i class="fa-solid fa-church"></i>
+          <span>Marriage: Oct 22</span>
+        </div>
+      </div>
+
+      <!-- Live Countdown Timer -->
+      <div class="countdown-container">
+        <h3 class="countdown-title">Counting Down To The Big Day</h3>
+        <div class="countdown-boxes" id="countdown-timer">
+          <div class="count-box">
+            <span class="count-val" id="days">00</span>
+            <span class="count-lbl">Days</span>
+          </div>
+          <div class="count-colon">:</div>
+          <div class="count-box">
+            <span class="count-val" id="hours">00</span>
+            <span class="count-lbl">Hours</span>
+          </div>
+          <div class="count-colon">:</div>
+          <div class="count-box">
+            <span class="count-val" id="minutes">00</span>
+            <span class="count-lbl">Minutes</span>
+          </div>
+          <div class="count-colon">:</div>
+          <div class="count-box">
+            <span class="count-val" id="seconds">00</span>
+            <span class="count-lbl">Seconds</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-cta-buttons">
+        <a href="#events" class="btn btn-primary"><i class="fa-solid fa-calendar-days"></i> View Events</a>
+        <button id="share-whatsapp-btn" class="btn btn-gold"><i class="fa-brands fa-whatsapp"></i> Share Card</button>
+      </div>
+    </div>
+
+    <div class="scroll-down-indicator">
+      <a href="#couple">
+        <span class="scroll-text">Scroll Down</span>
+        <i class="fa-solid fa-chevron-down bounce"></i>
+      </a>
+    </div>
+  </section>
+
+  <!-- The Couple Section -->
+  <section class="couple-section" id="couple">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-tag">Two Hearts, One Journey</span>
+        <h2 class="section-title">The Groom & Bride</h2>
+        <div class="decorative-line"></div>
+      </div>
+
+      <div class="couple-grid">
+        <!-- Groom Card -->
+        <div class="couple-card groom-card" data-aos="fade-up">
+          <div class="card-image-wrapper">
+            <div class="image-frame">
+              <img src="images/ajith.png" alt="Ajith - Groom" class="couple-photo">
+            </div>
+            <div class="badge-role">Groom</div>
+          </div>
+          <div class="card-info">
+            <h3 class="person-name">Ajith</h3>
+            <p class="person-subtitle">The Groom</p>
+            <p class="person-quote">"Finding you was like finding the missing piece of my soul. Here’s to a lifetime of laughter, faith, and unconditional love."</p>
+          </div>
+        </div>
+
+        <!-- Heart Connector -->
+        <div class="couple-connector">
+          <div class="connector-circle">
+            <i class="fa-solid fa-heart pulsating-heart"></i>
+          </div>
+        </div>
+
+        <!-- Bride Card -->
+        <div class="couple-card bride-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="card-image-wrapper">
+            <div class="image-frame">
+              <img src="images/alphonsa.png" alt="Alphonsa - Bride" class="couple-photo">
+            </div>
+            <div class="badge-role">Bride</div>
+          </div>
+          <div class="card-info">
+            <h3 class="person-name">Alphonsa</h3>
+            <p class="person-subtitle">The Bride</p>
+            <p class="person-quote">"In your smile, I see something more beautiful than stars. Excited to walk hand in hand into our blessed forever."</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Events Timeline Section -->
+  <section class="events-section" id="events">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-tag">Save The Dates</span>
+        <h2 class="section-title">Wedding Celebrations</h2>
+        <div class="decorative-line"></div>
+        <p class="section-subtitle">We invite you to join us in prayer and celebration as we exchange vows and seek blessings.</p>
+      </div>
+
+      <div class="events-wrapper">
+        <!-- Event 1: Engagement -->
+        <div class="event-card engagement-theme">
+          <div class="event-header-banner">
+            <div class="event-icon-box">
+              <i class="fa-solid fa-gem"></i>
+            </div>
+            <div class="event-badge">Pre-Wedding Celebration</div>
+          </div>
+          <div class="event-body">
+            <h3 class="event-title">The Engagement Ceremony</h3>
+            <p class="event-tagline">Betrothal & Blessing of the Rings</p>
+
+            <div class="event-details-list">
+              <div class="detail-item">
+                <i class="fa-regular fa-calendar-check detail-icon"></i>
+                <div>
+                  <strong>Date</strong>
+                  <p>Saturday, October 17</p>
+                </div>
+              </div>
+
+              <div class="detail-item">
+                <i class="fa-regular fa-clock detail-icon"></i>
+                <div>
+                  <strong>Time</strong>
+                  <p>11:45 AM</p>
+                </div>
+              </div>
+
+              <div class="detail-item">
+                <i class="fa-solid fa-church detail-icon"></i>
+                <div>
+                  <strong>Venue</strong>
+                  <p class="venue-name">Lourde Matha Church</p>
+                  <p class="venue-location">Aruvikuzhy, Kerala</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="event-actions">
+              <a href="https://maps.app.goo.gl/AiFdYuFPBDNHpJtd9" target="_blank" rel="noopener" class="btn btn-maps">
+                <i class="fa-solid fa-location-dot"></i> Get Directions (Google Maps)
+              </a>
+              <button class="btn btn-secondary cal-btn" onclick="addToCalendar('Engagement', '2026-10-17T11:45:00', 'Lourde Matha Church, Aruvikuzhy', 'Engagement Ceremony of Ajith & Alphonsa')">
+                <i class="fa-solid fa-calendar-plus"></i> Add to Calendar
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Event 2: Marriage -->
+        <div class="event-card marriage-theme highlight-card">
+          <div class="featured-ribbon">Main Ceremony</div>
+          <div class="event-header-banner">
+            <div class="event-icon-box">
+              <i class="fa-solid fa-church"></i>
+            </div>
+            <div class="event-badge gold">Holy Matrimony</div>
+          </div>
+          <div class="event-body">
+            <h3 class="event-title">The Holy Wedding Ceremony</h3>
+            <p class="event-tagline">Sacrament of Matrimony & Nuptial Mass</p>
+
+            <div class="event-details-list">
+              <div class="detail-item">
+                <i class="fa-regular fa-calendar-check detail-icon"></i>
+                <div>
+                  <strong>Date</strong>
+                  <p>Thursday, October 22</p>
+                </div>
+              </div>
+
+              <div class="detail-item">
+                <i class="fa-regular fa-clock detail-icon"></i>
+                <div>
+                  <strong>Time</strong>
+                  <p>11:00 AM – 11:30 AM</p>
+                </div>
+              </div>
+
+              <div class="detail-item">
+                <i class="fa-solid fa-church detail-icon"></i>
+                <div>
+                  <strong>Venue</strong>
+                  <p class="venue-name">St. Mary's Church</p>
+                  <p class="venue-location">Anickad, Kerala</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="event-actions">
+              <a href="https://maps.app.goo.gl/pvUyGsXzD1F2EM689?g_st=aw" target="_blank" rel="noopener" class="btn btn-gold">
+                <i class="fa-solid fa-location-dot"></i> Get Directions (Google Maps)
+              </a>
+              <button class="btn btn-secondary cal-btn" onclick="addToCalendar('Wedding Matrimony', '2026-10-22T11:00:00', 'St. Mary\'s Church, Anickad', 'Holy Matrimony of Ajith & Alphonsa')">
+                <i class="fa-solid fa-calendar-plus"></i> Add to Calendar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Venue Showcase & Maps Section -->
+  <section class="venue-section" id="venue-section">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-tag">Locate & Travel</span>
+        <h2 class="section-title">Venues & Directions</h2>
+        <div class="decorative-line"></div>
+      </div>
+
+      <div class="venue-showcase-box">
+        <div class="venue-illustration-col">
+          <img src="images/church_art.jpg" alt="Church Illustration" class="church-art-img">
+          <div class="art-overlay-badge">
+            <i class="fa-solid fa-cross"></i>
+            <span>Blessed Sacred Spaces</span>
+          </div>
+        </div>
+
+        <div class="venue-info-col">
+          <!-- Venue Tabs -->
+          <div class="venue-tabs">
+            <button class="venue-tab-btn active" data-tab="tab-engagement">
+              <i class="fa-solid fa-ring"></i> Aruvikuzhy Church
+            </button>
+            <button class="venue-tab-btn" data-tab="tab-marriage">
+              <i class="fa-solid fa-church"></i> Anickad Church
+            </button>
+          </div>
+
+          <!-- Tab 1 content -->
+          <div class="tab-content active" id="tab-engagement">
+            <div class="venue-card-inner">
+              <h3 class="v-title">Lourde Matha Church, Aruvikuzhy</h3>
+              <p class="v-type"><i class="fa-solid fa-heart"></i> Venue for Engagement (Oct 17 @ 11:45 AM)</p>
+              <p class="v-desc">A peaceful sanctuary surrounded by serenity, welcoming all family and friends for the Ring Blessing Ceremony.</p>
+              
+              <div class="v-feature-list">
+                <span><i class="fa-solid fa-square-parking"></i> Guest Parking Available</span>
+                <span><i class="fa-solid fa-van-shuttle"></i> Accessible Location</span>
+              </div>
+
+              <div class="v-direct-link-box">
+                <a href="https://maps.app.goo.gl/AiFdYuFPBDNHpJtd9" target="_blank" rel="noopener" class="btn btn-maps full-width">
+                  <i class="fa-solid fa-map-location-dot"></i> Open Lourde Matha Church on Google Maps
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab 2 content -->
+          <div class="tab-content" id="tab-marriage">
+            <div class="venue-card-inner">
+              <h3 class="v-title">St. Mary's Church, Anickad</h3>
+              <p class="v-type"><i class="fa-solid fa-crown"></i> Venue for Holy Matrimony (Oct 22 @ 11:00 AM)</p>
+              <p class="v-desc">A historic and magnificent Marian parish setting where Ajith & Alphonsa will be united in holy matrimony.</p>
+
+              <div class="v-feature-list">
+                <span><i class="fa-solid fa-square-parking"></i> Ample Parking Area</span>
+                <span><i class="fa-solid fa-utensils"></i> Reception Hall Nearby</span>
+              </div>
+
+              <div class="v-direct-link-box">
+                <a href="https://maps.app.goo.gl/pvUyGsXzD1F2EM689?g_st=aw" target="_blank" rel="noopener" class="btn btn-gold full-width">
+                  <i class="fa-solid fa-map-location-dot"></i> Open St. Mary's Church on Google Maps
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Blessings Wall Section -->
+  <section class="blessings-section" id="blessings">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-tag">Love & Prayers</span>
+        <h2 class="section-title">Wishes & Blessings Wall</h2>
+        <div class="decorative-line"></div>
+        <p class="section-subtitle">Heartfelt prayers and messages left by family and loved ones for Ajith & Alphonsa.</p>
+      </div>
+
+      <div class="blessings-grid" id="blessings-container">
+        <!-- Sample Blessing Cards will be rendered by script -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Share / Quick Bar -->
+  <section class="share-banner">
+    <div class="share-container">
+      <h3 class="share-title">Invite Friends & Family via WhatsApp</h3>
+      <p class="share-desc">Easily share this digital invitation card link with your loved ones!</p>
+      <div class="share-actions">
+        <button id="whatsapp-share-bottom" class="btn btn-whatsapp"><i class="fa-brands fa-whatsapp"></i> Share on WhatsApp</button>
+        <button id="copy-link-btn" class="btn btn-secondary"><i class="fa-solid fa-copy"></i> Copy Invitation Link</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-logo">
+        <span class="f-monogram">Ajith & Alphonsa</span>
+      </div>
+      <p class="footer-quote">"So they are no longer two, but one flesh. Therefore what God has joined together, let no one separate." — Matthew 19:6</p>
+      
+      <div class="footer-events-summary">
+        <div><i class="fa-solid fa-ring"></i> Engagement: Oct 17 @ Lourde Matha Church</div>
+        <div><i class="fa-solid fa-church"></i> Marriage: Oct 22 @ St. Mary's Church</div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 Ajith & Alphonsa Wedding Celebration. With divine love and grace.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast hidden"></div>
+
+  <!-- Custom JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
