@@ -1477,3 +1477,134 @@ section {
   }
 }
 
+/* TAP TO OPEN ENVELOPE INTRO OVERLAY */
+.envelope-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: radial-gradient(circle at center, #2B211E 0%, #120D0C 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.8s;
+}
+
+.envelope-overlay.opened {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.envelope-card {
+  background: linear-gradient(145deg, #FAF4EA 0%, #F5E8D4 100%);
+  border: 2px solid var(--primary-gold);
+  border-radius: 28px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(212, 175, 55, 0.3);
+  width: 100%;
+  max-width: 440px;
+  padding: 3.2rem 2.2rem;
+  text-align: center;
+  position: relative;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.envelope-card.opening {
+  transform: scale(1.1) rotateX(15deg);
+}
+
+.wax-seal-crest {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: var(--rose-accent);
+  border: 3px solid var(--primary-gold);
+  margin: 0 auto 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 25px rgba(158, 56, 80, 0.4);
+  position: relative;
+  animation: pulseGlow 2.5s infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 8px 25px rgba(158, 56, 80, 0.4); }
+  50% { box-shadow: 0 12px 35px rgba(212, 175, 55, 0.6); }
+}
+
+.seal-letters {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #FFF;
+}
+
+.seal-heart-icon {
+  font-size: 0.85rem;
+  color: var(--primary-gold);
+  margin-left: 0.3rem;
+}
+
+.env-intro-tag {
+  font-family: var(--font-cormorant);
+  font-size: 1.15rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--gold-dark);
+  margin-bottom: 0.6rem;
+}
+
+.env-couple-title {
+  font-family: var(--font-script);
+  font-size: 3.6rem;
+  color: var(--rose-accent);
+  line-height: 1.2;
+  margin-bottom: 0.8rem;
+}
+
+.env-dates-summary {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+}
+
+.btn-open-card {
+  font-size: 1.05rem;
+  padding: 1rem 2.2rem;
+  width: 100%;
+}
+
+/* POWERED BY ÉCLATTECH FOOTER LINK */
+.powered-by {
+  margin-top: 0.8rem;
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.eclat-tech-link {
+  color: var(--gold-light);
+  font-weight: 700;
+  text-decoration: none;
+  background: var(--gold-text-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: var(--transition-smooth);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.eclat-tech-link i {
+  -webkit-text-fill-color: initial;
+  color: var(--primary-gold);
+  font-size: 0.8rem;
+}
+
+.eclat-tech-link:hover {
+  opacity: 0.9;
+  text-decoration: underline;
+}
+
+

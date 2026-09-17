@@ -22,6 +22,30 @@
 </head>
 <body>
 
+  <!-- Tap to Open Envelope Intro Overlay -->
+  <div id="envelope-overlay" class="envelope-overlay">
+    <div class="envelope-card" id="envelope-card">
+      <div class="wax-seal-crest">
+        <div class="seal-inner">
+          <span class="seal-letters">A & A</span>
+          <i class="fa-solid fa-heart seal-heart-icon"></i>
+        </div>
+      </div>
+      <p class="env-intro-tag">You Are Cordially Invited</p>
+      <h2 class="env-couple-title">Ajith & Alphonsa</h2>
+      <p class="env-dates-summary">Engagement: Oct 17 ✦ Marriage: Oct 22</p>
+      
+      <button id="open-envelope-btn" class="btn btn-gold btn-open-card">
+        <i class="fa-solid fa-envelope-open-text"></i> Tap To Open Invitation
+      </button>
+    </div>
+  </div>
+
+  <!-- Background Audio Song -->
+  <audio id="wedding-audio" loop preload="auto">
+    <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3" type="audio/mpeg">
+  </audio>
+
   <!-- Floating Particles Canvas -->
   <canvas id="particles-canvas"></canvas>
   <canvas id="petals-canvas"></canvas>
@@ -409,6 +433,9 @@
 
       <div class="footer-bottom">
         <p>© 2026 Ajith & Alphonsa Wedding Celebration. With divine love and grace.</p>
+        <p class="powered-by">
+          Powered by <a href="https://eclatech-technologies.vercel.app/#enquire" target="_blank" rel="noopener" class="eclat-tech-link"><i class="fa-solid fa-bolt"></i> ÉclatTech Technology</a>
+        </p>
       </div>
     </div>
   </footer>

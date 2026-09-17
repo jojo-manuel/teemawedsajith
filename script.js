@@ -3,6 +3,7 @@
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
+  initEnvelopeIntro();
   initCountdown();
   initNavScroll();
   initVenueTabs();
@@ -354,7 +355,34 @@ function escapeHtml(str) {
 
 
 /* --------------------------------------------------------------------------
-   8. WEB AUDIO SYNTHESIZED AMBIENT MUSIC PLAYER
+   0. TAP TO OPEN ENVELOPE INTRO
+   -------------------------------------------------------------------------- */
+function initEnvelopeIntro() {
+  const overlay = document.getElementById('envelope-overlay');
+  const card = document.getElementById('envelope-card');
+  const openBtn = document.getElementById('open-envelope-btn');
+
+  if (!overlay || !openBtn) return;
+
+  function openEnvelope() {
+    card.classList.add('opening');
+    startAmbientMusic();
+    
+    const musicBtn = document.getElementById('music-toggle-btn');
+    const statusText = document.getElementById('music-status-text');
+    if (statusText) statusText.innerText = 'Playing 🎵';
+    if (musicBtn) musicBtn.classList.add('gold-shine');
+
+    setTimeout(() => {
+      overlay.classList.add('opened');
+    }, 600);
+  }
+
+  openBtn.addEventListener('click', openEnvelope);
+}
+
+/* --------------------------------------------------------------------------
+   8. WEB AUDIO & SONG MUSIC PLAYER
    -------------------------------------------------------------------------- */
 let audioCtx = null;
 let isPlaying = false;
@@ -369,13 +397,11 @@ function initAudioPlayer() {
   musicBtn.addEventListener('click', () => {
     if (!isPlaying) {
       startAmbientMusic();
-      isPlaying = true;
       statusText.innerText = 'Playing 🎵';
       musicBtn.classList.add('gold-shine');
-      showToast('🎵 Ambient wedding melody playing');
+      showToast('🎵 Romantic wedding song playing');
     } else {
       stopAmbientMusic();
-      isPlaying = false;
       statusText.innerText = 'Music';
       musicBtn.classList.remove('gold-shine');
       showToast('🔇 Music paused');
@@ -384,6 +410,19 @@ function initAudioPlayer() {
 }
 
 function startAmbientMusic() {
+  isPlaying = true;
+
+  // 1. Try playing audio element song
+  const audioEl = document.getElementById('wedding-audio');
+  if (audioEl) {
+    audioEl.play().then(() => {
+      return;
+    }).catch(err => {
+      console.log('Audio autoplay prevented, using Web Audio synth');
+    });
+  }
+
+  // 2. Synthesized backup harp chords
   if (!audioCtx) {
     audioCtx = new (window.AudioContext || window.webkitAudioContext)();
   }
@@ -391,16 +430,13 @@ function startAmbientMusic() {
     audioCtx.resume();
   }
 
-  // Soft major pentatonic chord notes for romantic harp effect (C4, E4, G4, A4, C5, D5, E5)
   const freqs = [261.63, 329.63, 392.00, 440.00, 523.25, 587.33, 659.25];
-  let index = 0;
 
   function playChordNote() {
     if (!isPlaying) return;
 
     const osc = audioCtx.createOscillator();
     const gain = audioCtx.createGain();
-
     const freq = freqs[Math.floor(Math.random() * freqs.length)];
     osc.type = 'sine';
     osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
@@ -422,6 +458,11 @@ function startAmbientMusic() {
 }
 
 function stopAmbientMusic() {
+  isPlaying = false;
+  const audioEl = document.getElementById('wedding-audio');
+  if (audioEl) {
+    audioEl.pause();
+  }
   if (audioTimer) {
     clearTimeout(audioTimer);
   }
