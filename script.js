@@ -392,6 +392,25 @@ function initAudioPlayer() {
   const musicBtn = document.getElementById('music-toggle-btn');
   const statusText = document.getElementById('music-status-text');
 
+  // Attempt immediate autoplay on load
+  startAmbientMusic();
+
+  // One-time interaction fallback to bypass mobile autoplay restrictions
+  function unlockAutoplay() {
+    if (!isPlaying) {
+      startAmbientMusic();
+      if (statusText) statusText.innerText = 'Playing 🎵';
+      if (musicBtn) musicBtn.classList.add('gold-shine');
+    }
+    document.removeEventListener('click', unlockAutoplay);
+    document.removeEventListener('touchstart', unlockAutoplay);
+    document.removeEventListener('scroll', unlockAutoplay);
+  }
+
+  document.addEventListener('click', unlockAutoplay, { once: true });
+  document.addEventListener('touchstart', unlockAutoplay, { once: true });
+  document.addEventListener('scroll', unlockAutoplay, { once: true });
+
   if (!musicBtn) return;
 
   musicBtn.addEventListener('click', () => {
