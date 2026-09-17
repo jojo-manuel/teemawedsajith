@@ -1263,22 +1263,85 @@ section {
   to { transform: translateX(0); opacity: 1; }
 }
 
-/* RESPONSIVE DESIGN */
+/* RESPONSIVE DESIGN & ALL-DEVICE UI OPTIMIZER */
+
+/* Notch & Safe Area Support for iPhone / Mobile Browsers */
+:root {
+  --sat: env(safe-area-inset-top, 0px);
+  --sab: env(safe-area-inset-bottom, 0px);
+  --sal: env(safe-area-inset-left, 0px);
+  --sar: env(safe-area-inset-right, 0px);
+}
+
+.navbar {
+  padding-top: calc(1rem + var(--sat));
+  padding-left: calc(1.5rem + var(--sal));
+  padding-right: calc(1.5rem + var(--sar));
+}
+
+.footer {
+  padding-bottom: calc(2rem + var(--sab));
+}
+
+/* Touch Targets Optimization for Mobile */
+@media (hover: none) and (pointer: coarse) {
+  .btn, .nav-btn, .nav-item, .venue-tab-btn {
+    min-height: 46px;
+    min-width: 46px;
+  }
+}
+
+/* 4K & Ultra Widescreen Displays (1600px+) */
+@media (min-width: 1600px) {
+  .section-container {
+    max-width: 1400px;
+  }
+  .hero-title {
+    font-size: 5.6rem;
+  }
+  .couple-card {
+    width: 420px;
+  }
+  .event-card {
+    width: 540px;
+  }
+}
+
+/* Laptop & Tablet Displays (901px - 1200px) */
+@media (max-width: 1200px) {
+  .section-container {
+    max-width: 960px;
+  }
+  .couple-grid {
+    gap: 1.8rem;
+  }
+  .event-card {
+    width: 440px;
+  }
+}
+
+/* Medium Tablets & Large Mobile (769px - 900px) */
 @media (max-width: 900px) {
   .hero-title {
-    font-size: 3.6rem;
+    font-size: 3.8rem;
   }
   .venue-showcase-box {
     grid-template-columns: 1fr;
   }
   .venue-illustration-col {
-    min-height: 250px;
+    min-height: 260px;
   }
-  .form-row {
-    grid-template-columns: 1fr;
+  .events-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+  .event-card {
+    width: 100%;
+    max-width: 520px;
   }
 }
 
+/* Mobile Phones (max-width: 768px) */
 @media (max-width: 768px) {
   .nav-links {
     display: none;
@@ -1302,21 +1365,115 @@ section {
   .hero-title {
     font-size: 3.2rem;
   }
+  .hero-subtitle {
+    font-size: 1.1rem;
+    letter-spacing: 0.1em;
+  }
+  .hero-dates-badge {
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.75rem 1.4rem;
+    border-radius: 24px;
+  }
+  .divider-dot {
+    display: none;
+  }
   .count-box {
-    width: 70px;
+    width: 68px;
     height: 70px;
+    border-radius: 12px;
   }
   .count-val {
     font-size: 1.5rem;
   }
-  .couple-card, .event-card {
+  .count-colon {
+    font-size: 1.4rem;
+  }
+  .couple-card {
     width: 100%;
+    max-width: 380px;
   }
   .couple-connector {
     transform: rotate(90deg);
     margin: -1rem 0;
   }
-  .rsvp-card-wrapper {
-    padding: 2.2rem 1.5rem;
+  .hero-cta-buttons {
+    flex-direction: column;
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+  .hero-cta-buttons .btn {
+    width: 100%;
   }
 }
+
+/* Small Smart Phones & Foldables (max-width: 420px) */
+@media (max-width: 420px) {
+  .hero-title {
+    font-size: 2.6rem;
+  }
+  .hero-title .ampersand {
+    font-size: 2rem;
+  }
+  .crest-circle {
+    width: 65px;
+    height: 65px;
+  }
+  .crest-letters {
+    font-size: 1.1rem;
+  }
+  .countdown-boxes {
+    gap: 0.4rem;
+  }
+  .count-box {
+    width: 56px;
+    height: 62px;
+  }
+  .count-val {
+    font-size: 1.25rem;
+  }
+  .count-lbl {
+    font-size: 0.65rem;
+  }
+  .count-colon {
+    display: none;
+  }
+  .venue-info-col {
+    padding: 1.5rem 1.2rem;
+  }
+  .venue-tabs {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .venue-tab-btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* Mobile Landscape Orientation */
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero-section {
+    min-height: auto;
+    padding-top: 5rem;
+    padding-bottom: 3rem;
+  }
+  .scroll-down-indicator {
+    display: none;
+  }
+}
+
+/* Reduced Motion Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  #particles-canvas, #petals-canvas {
+    display: none !important;
+  }
+}
+
