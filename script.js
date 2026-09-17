@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initRosePetals();
   initBlessingsWall();
   initAudioPlayer();
+  initAutoScroll();
   initShareButtons();
 });
 
@@ -375,6 +376,7 @@ function initEnvelopeIntro() {
 
     setTimeout(() => {
       overlay.classList.add('opened');
+      startAutoScroll();
     }, 600);
   }
 
@@ -533,7 +535,72 @@ function initShareButtons() {
 }
 
 /* --------------------------------------------------------------------------
-   11. TOAST NOTIFICATION UTILITY
+   11. AUTO SCROLL CONTROLLER
+   -------------------------------------------------------------------------- */
+let isAutoScrolling = false;
+let autoScrollFrame = null;
+const scrollSpeed = 0.8; // Smooth 0.8px per frame
+
+function initAutoScroll() {
+  const btn = document.getElementById('autoscroll-toggle-btn');
+  const statusText = document.getElementById('autoscroll-status-text');
+
+  if (!btn) return;
+
+  btn.addEventListener('click', () => {
+    if (!isAutoScrolling) {
+      startAutoScroll();
+      showToast('📜 Auto Scroll started');
+    } else {
+      stopAutoScroll();
+      showToast('📜 Auto Scroll paused');
+    }
+  });
+
+  // Pause on manual touch/drag interaction if desired
+  window.addEventListener('wheel', () => {
+    if (isAutoScrolling) stopAutoScroll();
+  }, { passive: true });
+}
+
+function startAutoScroll() {
+  const btn = document.getElementById('autoscroll-toggle-btn');
+  const statusText = document.getElementById('autoscroll-status-text');
+
+  isAutoScrolling = true;
+  if (statusText) statusText.innerText = 'Scrolling 📜';
+  if (btn) btn.classList.add('gold-shine');
+
+  function scrollStep() {
+    if (!isAutoScrolling) return;
+
+    // Check if reached bottom of page
+    if ((window.innerHeight + window.scrollY) >= (document.body.offsetHeight - 10)) {
+      // Smoothly wrap back to top or pause
+      stopAutoScroll();
+      return;
+    }
+
+    window.scrollBy(0, scrollSpeed);
+    autoScrollFrame = requestAnimationFrame(scrollStep);
+  }
+
+  if (autoScrollFrame) cancelAnimationFrame(autoScrollFrame);
+  autoScrollFrame = requestAnimationFrame(scrollStep);
+}
+
+function stopAutoScroll() {
+  const btn = document.getElementById('autoscroll-toggle-btn');
+  const statusText = document.getElementById('autoscroll-status-text');
+
+  isAutoScrolling = false;
+  if (autoScrollFrame) cancelAnimationFrame(autoScrollFrame);
+  if (statusText) statusText.innerText = 'Auto Scroll';
+  if (btn) btn.classList.remove('gold-shine');
+}
+
+/* --------------------------------------------------------------------------
+   12. TOAST NOTIFICATION UTILITY
    -------------------------------------------------------------------------- */
 function showToast(msg) {
   const toast = document.getElementById('toast');
